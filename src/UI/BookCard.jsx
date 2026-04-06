@@ -2,9 +2,12 @@ import React from 'react';
 import { Star } from 'lucide-react';
 import { Link } from 'react-router';
 
+
 const BookCard = ({book}) => {
     return (
-         <Link to={`bookDetails/${book.bookId}`} className="card bg-base-100 shadow-sm">
+         <Link to={`bookDetails/${book.bookId}`} 
+         
+         className="card bg-base-100 shadow-sm">
                  <figure className='p-6 bg-gray-100'>
                 <img
                  src={book.image}
