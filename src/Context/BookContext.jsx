@@ -5,8 +5,15 @@ export const BookContext = createContext();
 
 const BookProvider = ({children}) => {
 
-    const [readList, setReadList] = useState([]);
+    const [readList, setReadList] = useState({});
     const [wishList, setWishList] = useState([]);
+
+
+    // useEffect(() => {
+    //    const getReadListFromLocalDB = ;
+    //    console.log(getReadListFromLocalDB);
+    // }, []);
+
 
     const handleMarksAsRead = (currentBook) => {
         // step -1 : store book id or store book object
@@ -14,6 +21,7 @@ const BookProvider = ({children}) => {
         // step - 3: array or collection
         // step - 4: if the book is already exit show a alert or toast
         // step - 5: if not the and the books array or collection
+
         console.log(currentBook);
         const isExisted = readList.find(book => book.bookId === currentBook.bookId);
         if(isExisted){
