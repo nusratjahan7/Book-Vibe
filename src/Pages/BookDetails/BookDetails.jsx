@@ -12,7 +12,7 @@ const BookDetails = () => {
     const books = useLoaderData();   
 
     const expectedBook = books.find((book) => book.bookId == bookId);
-    console.log(expectedBook, "expectedBook");
+    
 
     const {bookName, yearOfPublishing, publisher, tags, category, rating, totalPages, review, image, author} = expectedBook;
 

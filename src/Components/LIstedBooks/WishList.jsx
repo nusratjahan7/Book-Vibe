@@ -2,11 +2,22 @@ import React, { useContext } from 'react';
 import { BookContext } from '../../Context/BookContext';
 import BookCard from '../../UI/BookCard';
 
-const WishList = () => {
-    const {readList, wishList} = useContext(BookContext);
-            console.log(readList, wishList, "bookContext");
+const WishList = ({sortingType}) => {
+    const { wishList } = useContext(BookContext);
 
-             if(wishList.length === 0){
+    const getFilteredList = () => {
+        if(sortingType === "pages"){
+            return [...wishList].sort((a, b) => a.totalPages - b.totalPages);
+        }
+        else if (sortingType === "rating"){
+            return [...wishList].sort((a, b) => b.rating - a.rating);
+        }
+        return wishList;
+    };
+
+    const filteredWishList = getFilteredList();
+
+    if(wishList.length === 0){
                 return <div className="flex items-center justify-center min-h-[60vh] rounded-2xl bg-gray-50">
       <div className="bg-white shadow-lg rounded-2xl p-8 text-center max-w-sm w-full border border-gray-100">
         
@@ -35,7 +46,7 @@ const WishList = () => {
     return (
         <div className='grid grid-cols-2 md:grid-cols-3 gap-4 container mx-auto'>
             {
-                wishList.map((book, i) => <BookCard key={i} book={book} />)
+                filteredWishList.map((book, i) => <BookCard key={i} book={book} />)
             }
             
         </div>
