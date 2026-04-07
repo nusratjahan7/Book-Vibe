@@ -1,11 +1,19 @@
 import React from 'react';
 import { Star } from 'lucide-react';
 import { Link } from 'react-router';
+import { motion } from "framer-motion";
+
 
 
 const BookCard = ({book}) => {
     return (
-         <Link to={`bookDetails/${book.bookId}`} 
+         <motion.div
+         initial={{opacity: 0, y: 30}}
+        whileInView={{opacity: 1, y: 0}}
+        viewport={{once: true}}
+        transition={{duration: 0.9}}
+         >
+            <Link to={`bookDetails/${book.bookId}`} 
          
          className="card bg-base-100 shadow-sm">
                  <figure className='p-6 bg-gray-100'>
@@ -27,6 +35,7 @@ const BookCard = ({book}) => {
                     </div>
                     </div>
                     </Link>
+         </motion.div>
     );
 };
 

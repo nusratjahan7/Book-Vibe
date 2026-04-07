@@ -20,8 +20,8 @@ const BookDetails = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     },[]);
 
-    const {handleMarksAsRead} = useContext(BookContext);
-    console.log(handleMarksAsRead, "bookContext");
+    const {handleMarksAsRead, handleWishList} = useContext(BookContext);
+    
 
 
     
@@ -71,7 +71,7 @@ const BookDetails = () => {
             </div>
         <div className="card-actions mt-2">
             <button onClick={() => handleMarksAsRead(expectedBook)} className="btn  border-gray-300">Mark is Read</button>
-            <button className="btn btn-primary">Wishlist</button>
+            <button onClick={() => handleWishList(expectedBook)} className="btn btn-primary">Wishlist</button>
          </div>
         </motion.div>
     </div>

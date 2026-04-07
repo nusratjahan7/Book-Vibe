@@ -1,10 +1,12 @@
 import React, { Children, createContext, useState } from 'react';
+import { toast } from 'react-toastify';
 
 export const BookContext = createContext();
 
 const BookProvider = ({children}) => {
 
     const [storedBooks, setStoreBooks] = useState([]);
+    const [wishList, setWishList] = useState([]);
 
     const handleMarksAsRead = (currentBook) => {
         // step -1 : store book id or store book object
@@ -15,16 +17,41 @@ const BookProvider = ({children}) => {
         console.log(currentBook);
         const isExisted = storedBooks.find(book => book.bookId === currentBook.bookId);
         if(isExisted){
-            alert("The book is already exit");
+            toast.error(`${currentBook.bookName} is already exist`);
         }
         else{
             setStoreBooks([...storedBooks, currentBook]);
-            alert(`${currentBook.bookName} is added to list`)
+            toast.success(`${currentBook.bookName} is added to read list`)
         }
     }
 
+    const handleWishList = (currentBook) => {
+        // step -1 : store book id or store book object
+        // step - 2: where to shore
+        // step - 3: array or collection
+        // step - 4: if the book is already exit show a alert or toast
+        // step - 5: if not the and the books array or collection
+        const isExistInReadList = storedBooks.find((book) => book.bookId === currentBook.bookId);
+
+        if(isExistInReadList){
+            toast.error(`${currentBook.bookName} is already in read list`);
+            return;
+        }
+
+        const isExisted = wishList.find(book => book.bookId === currentBook.bookId);
+        if(isExisted){
+            toast.error(`${currentBook.bookName} is already exist`);
+        }
+        else{
+            setWishList([...wishList, currentBook]);
+            toast.success(`${currentBook.bookName} is added to wish list`)
+        }
+    }
+
+    
+
     const data = {
-        storedBooks, setStoreBooks, handleMarksAsRead
+        storedBooks, setStoreBooks, handleMarksAsRead, wishList, setWishList, handleWishList
     };
 
     return <BookContext.Provider value={data}>

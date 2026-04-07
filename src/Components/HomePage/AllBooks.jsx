@@ -1,6 +1,6 @@
 import React, { use } from 'react';
 import BookCard from '../../UI/BookCard';
-import { motion } from "framer-motion";
+
 
 
 const hookPromise = fetch('/booksData.json').then(res => res.json())
@@ -13,11 +13,7 @@ const AllBooks = () => {
         
         <div className='my-12 w-11/12 mx-auto'>
             <h2 className='font-bold font1 text-3xl text-center'>Books</h2>
-        <motion.div
-        initial={{opacity: 0, y: 30}}
-        whileInView={{opacity: 1, y: 0}}
-        viewport={{once: true}}
-        transition={{duration: 0.9}}
+        <div
 
         className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-center mt-9'>
           {
@@ -27,7 +23,7 @@ const AllBooks = () => {
                 )
             })
           }
-          </motion.div>
+          </div>
         </div>
     );
 };
