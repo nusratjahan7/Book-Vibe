@@ -1,4 +1,4 @@
-import React, { use, useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useLoaderData, useParams } from 'react-router';
 import { motion } from "framer-motion";
 import { BookContext } from '../../Context/BookContext';

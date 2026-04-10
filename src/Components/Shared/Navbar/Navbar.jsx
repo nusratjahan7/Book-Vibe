@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router';
+import { NavLink } from 'react-router';
 
 const Navbar = () => {
     const links = <>
