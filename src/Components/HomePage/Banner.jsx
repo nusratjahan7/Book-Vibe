@@ -1,6 +1,7 @@
 import React from 'react';
-import hero from '../../assets/hero-book.png';
 import { motion } from "framer-motion";
+
+const hero = "https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=600";
 
 const Banner = () => {
     return (
